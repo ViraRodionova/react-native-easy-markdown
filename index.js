@@ -79,8 +79,8 @@ class Markdown extends Component {
     logDebug(nodeTree) {
         for (let i = 0; i < nodeTree.length; i++) {
             const node = nodeTree[i];
-            console.log(node.key + ' - ' + node.type.displayName, node);
-            if (Array.isArray(node.props.children)) {
+            console.log(node ? node.key + ' - ' + node.type.displayName : 'Node is not supported', node);
+            if (node && Array.isArray(node.props.children)) {
                 this.logDebug(node.props.children);
             }
         }
@@ -147,7 +147,7 @@ class Markdown extends Component {
         const {styles} = this.state;
 
         let children = this.renderNodes(node.props.children, key, extras);
-        const childrenTypes = children.map((node) => node.type.displayName);
+        const childrenTypes = children.map((node) => node ? node.type.displayName : 'Text');
 
         let isTextOnly = true;
         for (let i = 0; i < childrenTypes.length; i++) {
