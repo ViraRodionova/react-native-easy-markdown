@@ -64,7 +64,7 @@ class Markdown extends Component {
         if (nextProps.markdownStyles !== this.props.markdownStyles) {
             const defaultStyles = this.props.useDefaultStyles ? defaultStyles : {};
 
-            newState.styles = StyleSheet.create(Object.assign(defaultStyles, nextProps.markdownStyles));
+            newState.styles = StyleSheet.create(Object.assign({}, defaultStyles, nextProps.markdownStyles));
         }
 
         if (Object.keys(newState).length !== 0) {
