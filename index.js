@@ -218,7 +218,7 @@ class Markdown extends Component {
         const {styles} = this.state;
 
         const nodes = this.renderNodes(node.props.children, key, extras);
-        const childrenTypes = nodes.map((node) => node.type.displayName);
+        const childrenTypes = nodes.map((node) => node ? node.type.displayName : 'Text');
 
         let isTextOnly = true;
         for (let i = 0; i < childrenTypes.length; i++) {
